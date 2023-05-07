@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  --scroll-behavior: smooth!important;
+  scroll-behavior: smooth!important;
+} 
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+
+::selection {
+  @apply bg-purple-dark;
+}
+
+input[type="radio"]:checked + .checked {
+  @apply border-primary text-primary
+}
+
+input[type="radio"]:checked + .checked span {
+  @apply opacity-100
+}
+
+
+.markdown h1 {
+  @apply font-title text-7xl mb-10
+}
+
+.markdown h2 {
+  @apply font-title text-5xl text-secondary mb-10 mt-20
+}
+
+.markdown p {
+  @apply font-body text-xl mb-10 leading-9
+}
+
+.markdown li {
+   @apply font-body text-xl mb-5 leading-9
+}
+
+.markdown ol>li {
+  @apply list-decimal list-inside
+}
+
+.markdown ul>li {
+  @apply list-disc list-inside
+}
+
+.markdown ul, ol {
+  @apply py-10
+}
