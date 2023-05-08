@@ -4,7 +4,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className='bg-background text-white bg-[url("../../public/bg-noise.png")] bg-blend-overlay bg-repeat-round'>
+      {/*<body className='bg-background text-white bg-[url("../../public/bg-noise.png")] bg-blend-overlay bg-repeat-round'>*/}
+      <body className='bg-background text-white bg-[url("../../public/bg-noise-filter.png")] bg-repeat bg-[length:50%]'>
         <Main />
         <NextScript />
       </body>
