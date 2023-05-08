@@ -28,25 +28,23 @@ export default function Home() {
       <Header />
       
       <section className='grid md:grid-cols-2 gap-20 container px-10 mt-20'>
-        <div>
-          <div className='border-primary border w-max relative bg-purple-dark/30 group hover:-rotate-2 hover:scale-105 transition-all mb-10 md:mb-0'>
-            <Image src={profile} width={'350'} height={'100'} alt='profile photo'/>
-            <span className='w-4 h-4 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2'></span>
-            <span className='w-4 h-4 bg-primary absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2'></span>
-            <span className='w-4 h-4 bg-primary absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2'></span>
-            <span className='w-4 h-4 bg-primary absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2'></span>
+        <div className='border-primary border w-max relative bg-purple-dark/30 group hover:-rotate-2 hover:scale-105 transition-all mb-10 md:mb-0'>
+          <Image src={profile} width={'350'} height={'100'} alt='profile photo' className='w-full sm:w-auto'/>
+          <span className='w-4 h-4 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2'></span>
+          <span className='w-4 h-4 bg-primary absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2'></span>
+          <span className='w-4 h-4 bg-primary absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2'></span>
+          <span className='w-4 h-4 bg-primary absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2'></span>
 
-            <span className='hidden lg:inline absolute pointer-events-none px-6 py-4 bg-white/10 rounded-md top-1/4 right-0 translate-x-2/3 group-hover:right-8 group-hover:top-36 transition-all'>
-              <p className='font-body text-xl'>UI Designer</p>
-            </span>
-            <Image alt='image 3D camera' className='hidden lg:inline absolute pointer-events-none top-2/3 -translate-y-1/3 left-0 -translate-x-1/2 -rotate-12 group-hover:left-10 transition-all' src={camera} width={'400'} height={'100'} />
+          <span className='hidden lg:inline absolute pointer-events-none px-6 py-4 bg-white/10 rounded-md top-1/4 right-0 translate-x-2/3 group-hover:right-8 group-hover:top-36 transition-all'>
+            <p className='font-body text-xl'>UI Designer</p>
+          </span>
+          <Image alt='image 3D camera' className='hidden lg:inline absolute pointer-events-none top-2/3 -translate-y-1/3 left-0 -translate-x-1/2 -rotate-12 group-hover:left-10 transition-all' src={camera} width={'400'} height={'100'} />
 
-          </div>
         </div>
 
 
         <div className='flex flex-col justify-center'>
-          <h2 className="font-title font-bold text-7xl lg:text-8xl"><span className='text-secondary'>Hi</span> there <Image className='inline mb-6' src={emojiHand} width={'80'} height={'100'} /></h2>
+          <h2 className="font-title font-bold text-5xl sm:7xl lg:text-8xl"><span className='text-secondary'>Hi</span> there <Image className='inline mb-6' src={emojiHand} width={'80'} height={'100'} /></h2>
           <p className='font-body max-w-xl text-xl text-body-secondary'>True passionate about new technologies, web design and computer graphics, I am dynamic, motivated and curious and in constant progress in my job. I feed my thirst for knowledge every day to improve my creative spirit and move forward.</p>
         </div>
       </section>

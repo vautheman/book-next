@@ -53,13 +53,13 @@ export default function Contact() {
         <header className="flex flex-col gap-5">
           <h1 className="mt-52 font-title font-bold text-7xl lg:text-8xl">Tell me all <span className='text-primary'>about</span> it <Image className='inline mb-6' src={emojiHand} width={'80'} height={'100'} /></h1>
           <form className="mt-10" onSubmit={handleOnSubmit}>
-            <div className="inline-flex flex-wrap font-title text-5xl items-center gap-8">
+            <div className="flex flex-wrap flex-col sm:flex-row font-title text-5xl sm:items-center gap-8">
               <p>My name is </p>
-              <input required name="name" type="text" placeholder="your name" className="placeholder:text-white/20 text-primary border-b-white/20 border-b-4 bg-transparent w-96 py-3 focus:outline-none focus:border-primary" />
+              <input required name="name" type="text" placeholder="your name" className="placeholder:text-white/20 text-primary border-b-white/20 border-b-4 bg-transparent w-full sm:w-96 py-3 focus:outline-none focus:border-primary" />
               <p>it concerns</p>
 
               <input required value='quote' id="quote" name="object" type="radio" className="hidden" />
-              <label for={'quote'} className="group relative p-3 border-4 border-white/20 text-white/20 checked hover:scale-105 hover:-rotate-2 hover:border-primary hover:bg-purple-dark/30 hover:text-white/50 transition-all cursor-pointer">
+              <label for={'quote'} className="group w-max relative p-3 border-4 border-white/20 text-white/20 checked hover:scale-105 hover:-rotate-2 hover:border-primary hover:bg-purple-dark/30 hover:text-white/50 transition-all cursor-pointer">
                 a quote
                 <span className='w-3 h-3 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
@@ -68,7 +68,7 @@ export default function Contact() {
               </label>
 
               <input required value='question' id="question" name="object" type="radio" className="hidden" />
-              <label for={'question'} className="group relative p-3 border-4 border-white/20 text-white/20 checked hover:scale-105 hover:-rotate-2 hover:border-primary hover:bg-purple-dark/30 hover:text-white/50 transition-all cursor-pointer">
+              <label for={'question'} className="group w-max relative p-3 border-4 border-white/20 text-white/20 checked hover:scale-105 hover:-rotate-2 hover:border-primary hover:bg-purple-dark/30 hover:text-white/50 transition-all cursor-pointer">
                 a question
                 <span className='w-3 h-3 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
@@ -77,7 +77,7 @@ export default function Contact() {
               </label>
 
               <input required value='proposition' id="proposition" name="object" type="radio" className="hidden" />
-              <label for={'proposition'} className="group relative p-3 border-4 border-white/20 text-white/20 checked hover:scale-105 hover:-rotate-2 hover:border-primary hover:bg-purple-dark/30 hover:text-white/50 transition-all cursor-pointer">
+              <label for={'proposition'} className="group w-max relative p-3 border-4 border-white/20 text-white/20 checked hover:scale-105 hover:-rotate-2 hover:border-primary hover:bg-purple-dark/30 hover:text-white/50 transition-all cursor-pointer">
                 a proposition
                 <span className='w-3 h-3 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
@@ -87,7 +87,7 @@ export default function Contact() {
 
               <p>. You can reach me at</p>
 
-              <input required name="email" type="text" placeholder="your email" className="placeholder:text-white/20 text-primary border-b-white/20 border-b-4 bg-transparent w-96 py-3 focus:outline-none focus:border-primary" />
+              <input required name="email" type="text" placeholder="your email" className="placeholder:text-white/20 text-primary border-b-white/20 border-b-4 bg-transparent w-full sm:w-96 py-3 focus:outline-none focus:border-primary" />
             </div>
 
             <textarea required name="message" className="w-full h-64 mt-16 mb-10 bg-white/5 font-body text-xl text-white py-5 px-8 placeholder:text-white/20 placeholder:font-bold focus:outline-none" placeholder="Your message">

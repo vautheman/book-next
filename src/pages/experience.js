@@ -166,7 +166,7 @@ export default function Experience() {
           <aside className="max-w-4xl w-auto flex flex-col gap-5">
             <header className="inline-flex gap-6 items-center">
               <Image src={malt} width={'50'} height={'100'}  />
-              <h3 className="font-title text-5xl ">Freelance on Malt</h3>
+              <h3 className="font-title text-3xl sm:text-5xl ">Freelance on Malt</h3>
             </header>
           
             <div className="border-l-2 border-secondary pl-12 ml-6">
@@ -178,7 +178,7 @@ export default function Experience() {
           <aside className="max-w-4xl flex flex-col gap-5">
             <header className="inline-flex gap-6 items-center">
               <Image src={herbe} width={'50'} height={'100'} />
-              <h3 className="font-title text-5xl ">Freelance at le passe jardins</h3>
+              <h3 className="font-title text-3xl sm:text-5xl ">Freelance at le passe jardins</h3>
             </header>
           
             <div className="border-l-2 border-secondary pl-12 ml-6">
@@ -190,7 +190,7 @@ export default function Experience() {
           <aside className="max-w-4xl flex flex-col gap-5">
             <header className="inline-flex gap-6 items-center">
               <Image src={building} width={'50'} height={'100'} />
-              <h3 className="font-title text-5xl ">Apprenticeship at DRIM France</h3>
+              <h3 className="font-title text-3xl sm:text-5xl ">Apprenticeship at DRIM France</h3>
             </header>
           
             <div className="border-l-2 border-secondary pl-12 ml-6">
@@ -202,7 +202,7 @@ export default function Experience() {
           <aside className="max-w-4xl flex flex-col gap-5">
             <header className="inline-flex gap-6 items-center">
               <Image src={instic} width={'50'} height={'100'} />
-              <h3 className="font-title text-5xl ">INSTIC, Web Design Training</h3>
+              <h3 className="font-title text-3xl sm:text-5xl ">INSTIC, Web Design Training</h3>
             </header>
           
             <div className="border-l-2 border-secondary pl-12 ml-6">
