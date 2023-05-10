@@ -35,11 +35,11 @@ input[type="radio"]:checked + .checked span {
 }
 
 
-.markdown h1 {
+.markdown h2 {
   @apply font-title text-7xl mb-10
 }
 
-.markdown h2 {
+.markdown h3 {
   @apply font-title text-5xl text-secondary mb-10 mt-20
 }
 
@@ -61,4 +61,12 @@ input[type="radio"]:checked + .checked span {
 
 .markdown ul, ol {
   @apply py-10
+}
+
+.markdown a {
+  @apply text-primary font-bold
+}
+
+.markdown img {
+  @apply mb-2
 }

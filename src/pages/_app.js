@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
 import { League_Spartan } from 'next/font/google'
 import { Space_Mono } from 'next/font/google'
+import 'animate.css'
 
 import { AnimatePresence, motion, useIsPresent } from 'framer-motion'
 import { useRouter } from 'next/router'

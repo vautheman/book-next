@@ -7,11 +7,13 @@ import moment from "moment";
 import 'moment/locale/fr';
 import { motion, useIsPresent } from 'framer-motion'
 import Image from "next/image";
+import { useState } from "react";
 
 export default function WorkDetail({work, url}) {
   function ImageLoader({src}) {
     return url + src
   }
+
   const isPresent = useIsPresent()
   moment.locale('fr')
   return( 
@@ -40,9 +42,9 @@ export default function WorkDetail({work, url}) {
         </header>
       </section>
 
-      <Image sizes="100%" width={500} height={500} loader={ImageLoader} className="w-full aspect-video object-cover mb-32 " src={work.data.attributes.Image.data.attributes.formats.large.url} alt={`photo ${work.data.attributes.Titre}`}/>
+      <Image sizes="100%" width={500} height={500} loader={ImageLoader} className="container w-full px-10 rounded-md aspect-video object-cover mb-32 " src={work.data.attributes.Image.data.attributes.formats.large.url} alt={`photo ${work.data.attributes.Titre}`}/>
       
-      <section className="container px-10">
+      <section className="container px-10 flex">
         <ReactMarkdown className="markdown max-w-5xl mx-auto">
           {work.data.attributes.Contenu}
         </ReactMarkdown>
@@ -67,6 +69,7 @@ export async function getServerSideProps({query}){
 
   const id = query.id
   const workResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/${id}/?populate=*`);
+
 
   return {
     props: {
