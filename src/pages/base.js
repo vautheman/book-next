@@ -10,10 +10,13 @@ import donut from '../../public/works/donut.png'
 import mockupAnais from '../../public/works/mockup-site-anais2.jpg'
 import { fetcher } from "./api/mail";
 import Link from "next/link";
+import moment from "moment";
+import { useState } from "react";
 
 
 
 export default function Works({ works, url }) {
+  const [load, setLoad] = useState(-1)
 
   function ImageLoader({src}) {
     return url + src
@@ -24,40 +27,45 @@ export default function Works({ works, url }) {
     <>
       <Nav />
       <section className="container px-10 mt-52">
-        <div className="bg-purple-dark/30 border border-primary relative flex justify-center items-center w-full h-96 px-16 text-center">
-          <span className='w-4 h-4 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2'></span>
-          <span className='w-4 h-4 bg-primary absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2'></span>
-          <span className='w-4 h-4 bg-primary absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2'></span>
-          <span className='w-4 h-4 bg-primary absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2'></span>
 
-          <Image className='hidden lg:inline absolute pointer-events-none top-2/3 -translate-y-1/3 left-0 -translate-x-1/2 -rotate-12 group-hover:left-10 transition-all' alt="image 3D camera" src={camera} width={'400'} height={'100'} />
-          
-          <h1 className="font-title font-bold text-7xl lg:text-8xl"><span className='text-secondary'>knowledge</span> base</h1>
-        </div>
+        <header className="mb-32 container max-w-7xl">
+          <h1 className="font-title font-bold text-7xl lg:text-8xl mb-5">Knowledge <span className='text-primary'>base</span></h1>
+          <p className='font-body text-xl text-body-secondary'>In this knowledge base, you will find comprehensive and detailed guides to help you accomplish tasks and projects. The tutorials are designed to be clear, concise and easy to follow, with screenshots and illustrations to visually guide you through each step. My goal is to provide high quality resources to help you succeed in your projects, whether you are a beginner or an experienced user. I hope these tutorials help you achieve your goals!</p>
+        </header>
 
 
-        <div className="grid md:grid-cols-2 gap-10 mt-32 lg:px-20">
+      
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-24 max-w-7xl mx-auto">
           {works &&
-            works.data.map((work) => {
+            works.data.map((work, index) => {
               return (
-                <Link href={{pathname: '/work-detail', query: {id: work.id} }} key={work.id}>
-                  <article className="mb-10 relative group hover:scale-105 hover:-rotate-2 hover:border-2 border-secondary transition-all">
-                    <header className='relative h-full'>
-                    {/*<img className="aspect-square lg:aspect-auto object-cover w-full" src={`${process.env.STRAPI_URL + work.attributes.Image.data.attributes.formats.large.url}`} key={work.id} alt={`photo ${work.attributes.Titre}`} />*/}
-                    <Image sizes="100%" width={500} height={500} loader={ImageLoader} className="aspect-video w-full" src={work.attributes.Image.data.attributes.formats.medium.url} key={work.id} alt={`photo ${work.attributes.Titre}`} />
-                    </header>
-
-                    <div className='px-9 py-7 bg-purple-dark/30'>
-                      <h3 className='font-title text-4xl mb-5'>{work.attributes.Titre}</h3> 
-                      <p className='font-body text-xl text-body-secondary'>{work.attributes.Description}</p>
+                <Link onClick={() => setLoad(index)} className="flex flex-col gap-8 group" href={{pathname: '/base-detail', query: {id: work.id} }} key={work.id}>
+                  <header className="relative group-hover:scale-105 transition-transform">
+                    <div className="relative">
+                      <Image sizes="100%" width={"500"} height={"500"} className="aspect-video object-cover w-full rounded-sm" loader={ImageLoader} src={work.attributes.Image.data.attributes.formats.medium.url} />
+                      <Image sizes="100%" width={"500"} height={"500"} className="aspect-video object-cover w-full rounded-sm absolute -z-10 top-0 left-0 blur-3xl opacity-30" loader={ImageLoader} src={work.attributes.Image.data.attributes.formats.thumbnail.url} />
                     </div>
-
-                    <span className='w-3 h-3 bg-secondary absolute opacity-0 right-0 top-0 translate-x-1/2 -translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-                    <span className='w-3 h-3 bg-secondary absolute opacity-0 left-0 top-0 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-                    <span className='w-3 h-3 bg-secondary absolute opacity-0 left-0 bottom-0 -translate-x-1/2 translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-                    <span className='w-3 h-3 bg-secondary absolute opacity-0 right-0 bottom-0 translate-x-1/2 translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-
-                  </article>
+                    {index == 0 &&
+                      <span className="absolute top-5 left-5 bg-secondary px-3 py-2 rounded-md text-black font-body">New</span>
+                    }
+                  </header>
+                  <p className="font-body text-sm text-body-secondary">{moment(work.attributes.createdAt).format('DD MMMM YYYY')}</p>
+                  <div className="flex flex-col gap-3">
+                    <div className="inline-flex justify-between items-center">
+                      <h3 className="font-title text-4xl truncate" title={work.attributes.Titre}>{work.attributes.Titre}</h3>
+                      
+                      <span className="h-5 w-8 flex justify-center items-center">
+                      {load === index ? 
+                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg> :
+                        <i class="ri-arrow-right-up-line ri-2x group-hover:text-secondary transition-colors"></i>
+                      }
+                      </span>
+                    </div>
+                    <p className="font-body text-xl text-body-secondary truncate">{work.attributes.Description}</p>
+                  </div>
                 </Link>
               )
             })
@@ -81,7 +89,7 @@ export default function Works({ works, url }) {
 
 export async function getServerSideProps() {
 
-  const worksResponse = await fetcher(`${process.env.STRAPI_URL}/api/documentations/?populate=*`);
+  const worksResponse = await fetcher(`${process.env.STRAPI_URL}/api/documentations/?populate=*&sort[0]=updatedAt%3Adesc`);
 
   return {
     props: {

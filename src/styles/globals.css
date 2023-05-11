@@ -70,3 +70,11 @@ input[type="radio"]:checked + .checked span {
 .markdown img {
   @apply mb-2
 }
+
+.markdown pre {
+  @apply w-full bg-purple-dark/30 border-primary border py-4 px-5 mb-10
+}
+
+.markdown pre code {
+  @apply font-body text-lg whitespace-break-spaces
+}

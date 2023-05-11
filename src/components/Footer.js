@@ -21,7 +21,7 @@ export default function Footer() {
           
           <ul className="font-body text-lg text-body-secondary">
             <h4 className="font-title text-3xl text-white mb-5 w-max">Ressources</h4>
-            <Link href={'#'} className='hover:text-secondary transition-colors' ><li>Knowledge base</li></Link>
+            <Link href={'base'} className='hover:text-secondary transition-colors' ><li>Knowledge base</li></Link>
             <Link target='_blank' href={'https://autheman-victor.notion.site/Boite-outils-a4bb44b1e62b423d91133b79680cbeb4'} className='hover:text-secondary transition-colors' ><li>Useful links</li></Link>
           </ul>
        </div>

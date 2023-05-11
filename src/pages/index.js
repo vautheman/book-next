@@ -12,9 +12,18 @@ import Footer from '@/components/Footer'
 import Button from '@/components/Button'
 import Link from 'next/link'
 import Head from 'next/head'
+import { useState } from 'react'
+import { fetcher } from './api/mail'
+import moment from 'moment'
 
-export default function Home() {
+export default function Home({works, url}) {
+  const [load, setLoad] = useState(-1)
   const isPresent = useIsPresent()
+
+  function ImageLoader({src}) {
+    return url + src
+  }
+
   return (
     <>
       <Head>
@@ -53,47 +62,45 @@ export default function Home() {
       <section className='mt-64 container px-10'>
         <h2 className="font-title font-bold text-7xl md:text-8xl text-center mb-24">My favorite <span className='text-primary'>projects</span></h2>
         <div className='flex flex-wrap justify-center gap-10'>
-          <Link href={'https://totor-et-jadou.fr'} target='_blank'>
-            <article className='max-w-[550px] w-auto relative group hover:scale-105 hover:-rotate-2 hover:border-2 border-secondary transition-all'>
-            
-              <header className='relative'>
-                <Image src={totorEtJadouHomepage} sizes='100%' alt='totor et jadou Homepage' className='aspect-video'/>
-                <span className='absolute w-full h-full bg-black/30 top-0 left-0'></span>
-                <h3 className='px-5 py-4 backdrop-blur-lg absolute bottom-0 w-full font-title text-4xl text-center'>Totor & Jadou</h3> 
-              </header>
-
-              <div className='px-9 py-7 bg-purple-dark/30'>
-                <p className='font-body text-xl text-body-secondary'>Recipe blog developed in next.js, tailwindcss and notion in backend</p>
-              </div>
-
-              <span className='w-3 h-3 bg-secondary absolute opacity-0 right-0 top-0 translate-x-1/2 -translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-              <span className='w-3 h-3 bg-secondary absolute opacity-0 left-0 top-0 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-              <span className='w-3 h-3 bg-secondary absolute opacity-0 left-0 bottom-0 -translate-x-1/2 translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-              <span className='w-3 h-3 bg-secondary absolute opacity-0 right-0 bottom-0 translate-x-1/2 translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
 
 
-            </article>
-          </Link>
-          
-          <article className='max-w-[550px] w-auto relative group hover:scale-105 hover:rotate-2 hover:border-2 border-primary transition-all'>
-            <header className='relative'>
-              <Image src={fabulousBg} sizes='100%' alt='Fabulous bot discord' className='aspect-video'/>
-              <span className='absolute w-full h-full bg-black/30 top-0 left-0'></span>
-              <h3 className='px-5 py-4 backdrop-blur-lg absolute bottom-0 w-full font-title text-4xl text-center'>Fabulous Bot</h3> 
-            </header>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-24 max-w-7xl mx-auto">
+            {works &&
+                works.data.map((work, index) => {
+                return (
 
-            <div className='px-9 py-7 bg-purple-dark/30'>
-              <p className='font-body text-xl text-body-secondary'>Bot discord music and soundboard developed with node.js and discord.js</p>
-            </div>
-
-            <span className='w-3 h-3 bg-primary absolute opacity-0 right-0 top-0 translate-x-1/2 -translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-            <span className='w-3 h-3 bg-primary absolute opacity-0 left-0 top-0 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-            <span className='w-3 h-3 bg-primary absolute opacity-0 left-0 bottom-0 -translate-x-1/2 translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-            <span className='w-3 h-3 bg-primary absolute opacity-0 right-0 bottom-0 translate-x-1/2 translate-y-1/2 group-hover:opacity-100 transition-opacity'></span>
-
-
-          </article>
-
+                  <Link onClick={() => setLoad(index)} className="flex flex-col gap-8 group" href={{pathname: '/work-detail', query: {id: work.id} }} key={work.id}>
+                    <header className="relative group-hover:scale-105 transition-transform">
+                      <div className="relative">
+                        <Image sizes="100%" width={"500"} height={"500"} className="aspect-video object-cover w-full rounded-sm" loader={ImageLoader} src={work.attributes.Image.data.attributes.formats.medium.url} />
+                        <Image sizes="100%" width={"500"} height={"500"} className="aspect-video object-cover w-full rounded-sm absolute -z-10 top-0 left-0 blur-3xl opacity-30" loader={ImageLoader} src={work.attributes.Image.data.attributes.formats.thumbnail.url} />
+                      </div>
+                      {index == 0 &&
+                        <span className="absolute top-5 left-5 bg-secondary px-3 py-2 rounded-md text-black font-body">New</span>
+                      }
+                    </header>
+                    <p className="font-body text-sm text-body-secondary">{moment(work.attributes.createdAt).format('DD MMMM YYYY')}</p>
+                    <div className="flex flex-col gap-3">
+                      <div className="inline-flex justify-between items-center">
+                        <h3 className="font-title text-4xl truncate" title={work.attributes.Titre}>{work.attributes.Titre}</h3>
+                      
+                        <span className="h-5 w-8 flex justify-center items-center">
+                        {load === index ? 
+                          <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg> :
+                          <i class="ri-arrow-right-up-line ri-2x group-hover:text-secondary transition-colors"></i>
+                        }
+                        </span>
+                      </div>
+                      <p className="font-body text-xl text-body-secondary truncate">{work.attributes.Description}</p>
+                    </div>
+                  </Link>
+                  )
+                })
+            }
+          </div>
         </div>
       </section>
 
@@ -110,4 +117,19 @@ export default function Home() {
 
     </>
   )
+}
+
+export async function getServerSideProps() {
+
+  const worksResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/?populate=*&filters[id][$eq][0]=1&filters[id][$eq][1]=7&sort=id%3Adesc`);
+
+  console.log(worksResponse)
+
+  return {
+    props: {
+      works: worksResponse,
+      url: process.env.STRAPI_URL
+    }
+  }
+  
 }

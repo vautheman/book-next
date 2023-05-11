@@ -73,7 +73,7 @@ export default function WorkDetail({work, url}) {
 export async function getServerSideProps({query}){
 
   const id = query.id
-  const workResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/${id}/?populate=*`);
+  const workResponse = await fetcher(`${process.env.STRAPI_URL}/api/documentations/${id}/?populate=*`);
 
 
   return {
