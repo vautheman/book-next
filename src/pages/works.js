@@ -12,6 +12,7 @@ import { fetcher } from "./api/mail";
 import Link from "next/link";
 import moment from "moment";
 import { useState } from "react";
+import Head from "next/head";
 
 
 
@@ -26,6 +27,14 @@ export default function Works({ works, categories, url }) {
 
   return (
     <>
+      <Head>
+        <title>Works - Victor Autheman</title>
+        <meta property="og:title" content={'Works - Victor Autheman'} key="title" />
+        <meta name='description' content={'Discover my achievements, from graphic design projects for clients, companies and organizations, to front-end development projects for websites and applications. Each project is accompanied by a detailed description, as well as information about the missions I have successfully accomplished to improve user experience and quality. I hope that these concrete examples will inspire your own projects and missions.'} />
+        <meta name='keywords' content='graphic design developer front end graphiste designer victor autheman' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
+
       <Nav />
       <section className="container px-10 mt-52">
 

@@ -6,6 +6,7 @@ import emojiHand from '../../public/main.png'
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import { useState } from "react";
+import Head from "next/head";
 
 export default function Contact() {
   const isPresent = useIsPresent()
@@ -48,6 +49,13 @@ export default function Contact() {
 
   return (
     <>
+      <Head>
+        <title>Say Hello ! - Victor Autheman</title>
+        <meta property="og:title" content={'Say Hello ! - Victor Autheman'} key="title" />
+        <meta name='description' content={'Tell me all about it'} />
+        <meta name='keywords' content='graphic design developer front end graphiste designer victor autheman' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
       <Nav />
       <section className="container px-10">
         <header className="flex flex-col gap-5">

@@ -8,6 +8,7 @@ import 'moment/locale/fr';
 import { motion, useIsPresent } from 'framer-motion'
 import Image from "next/image";
 import { useState } from "react";
+import Head from "next/head";
 
 export default function WorkDetail({work, url}) {
   function ImageLoader({src}) {
@@ -18,6 +19,14 @@ export default function WorkDetail({work, url}) {
   moment.locale('fr')
   return( 
     <>
+      <Head>
+        <title>{work.data.attributes.Titre} - Victor Autheman</title>
+        <meta property="og:title" content={work.data.attributes.Title} key="title" />
+        <meta name='description' content={work.data.attributes.Description} />
+        <meta name='keywords' content='graphic design developer front end graphiste designer victor autheman' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
+
       <Nav /> 
       <section className="container px-10">
         <header className="flex flex-col gap-5 max-w-4xl mx-auto text-center">

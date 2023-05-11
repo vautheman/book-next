@@ -8,6 +8,8 @@ import herbe from '../../public/icons/herbe.png'
 import building from '../../public/icons/building.png'
 import instic from '../../public/icons/instic.png'
 import Button from "@/components/Button";
+import Footer from "@/components/Footer";
+import Head from "next/head";
 
 import react from '../../public/icons/react.png'
 import css from '../../public/icons/css.png'
@@ -22,12 +24,19 @@ import illustrator from '../../public/icons/illustrator.png'
 import indesign from '../../public/icons/indesign.png'
 import figma from '../../public/icons/figma.svg'
 import spline from '../../public/icons/spline.png'
-import Footer from "@/components/Footer";
 
 export default function Experience() {
   const isPresent = useIsPresent()
   return (
     <>
+      <Head>
+        <title>Experience - Victor Autheman</title>
+        <meta property="og:title" content={'Experience - Victor Autheman'} key="title" />
+        <meta name='description' content={'Every day, I’m honing my skills on the most in-demand technologies, such as JavaScript, React.js, Next.js, Tailwind CSS, Node.js, MariaDB, PHP, and much more! My flexibility allows me to choose the technologies I want to use in my projects.'} />
+        <meta name='keywords' content='graphic design developer front end graphiste designer victor autheman' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
+
       <Nav />
        
       <section>

@@ -12,6 +12,7 @@ import { fetcher } from "./api/mail";
 import Link from "next/link";
 import moment from "moment";
 import { useState } from "react";
+import Head from "next/head";
 
 
 
@@ -25,6 +26,14 @@ export default function Works({ works, url }) {
 
   return (
     <>
+      <Head>
+        <title>Knowledge base - Victor Autheman</title>
+        <meta property="og:title" content={'Knowledge base - Victor Autheman'} key="title" />
+        <meta name='description' content={'In this knowledge base, you will find comprehensive and detailed guides to help you accomplish tasks and projects. The tutorials are designed to be clear, concise and easy to follow, with screenshots and illustrations to visually guide you through each step. My goal is to provide high quality resources to help you succeed in your projects, whether you are a beginner or an experienced user. I hope these tutorials help you achieve your goals!'} />
+        <meta name='keywords' content='graphic design developer front end graphiste designer victor autheman' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
+
       <Nav />
       <section className="container px-10 mt-52">
 

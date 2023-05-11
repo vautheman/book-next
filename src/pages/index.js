@@ -119,11 +119,10 @@ export default function Home({works, url}) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
   const worksResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/?populate=*&filters[id][$eq][0]=1&filters[id][$eq][1]=7&sort=id%3Adesc`);
-
-  console.log(worksResponse)
+  // console.log(worksResponse)
 
   return {
     props: {
@@ -131,5 +130,4 @@ export async function getServerSideProps() {
       url: process.env.STRAPI_URL
     }
   }
-  
 }
