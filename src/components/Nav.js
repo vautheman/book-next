@@ -8,7 +8,7 @@ export default function Nav() {
   <nav className="py-8 fixed w-full left-0 top-0 text-xl z-40 bg-background/50 backdrop-blur-lg">
     <ProgressBar color1="#29263C00" color2="#A277FF"/>
     <div className="container flex justify-between font-body px-10 items-center">
-      <Link href="/"><p>Victor</p></Link>
+      <Link href="/"><p>Victor Autheman</p></Link>
       <ul className="gap-6 hidden md:inline-flex">
         <li><Link href="works" className="hover:text-primary transition-colors">Works</Link></li>
         <li><Link href="experience" className="hover:text-primary transition-colors">Experience</Link></li>
