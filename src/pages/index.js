@@ -27,7 +27,7 @@ export default function Home({works, url}) {
   return (
     <>
       <Head>
-        <title>👋 Victor Autheman - Graphic Design & Developpeur Front-End</title>
+        <title>👋 Victor Autheman - Graphic Design & Developeur Front-End</title>
         <meta property="og:title" content="👋 Victor Autheman - Graphic Design & Developer Front-End" key="title" />
         <meta name='description' content='My name is Victor Autheman and I’m fascinated by the new technologies and the universe of the web more particularly' />
         <meta name='keywords' content='graphic design developer front end graphiste designer victor autheman' />

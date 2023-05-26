@@ -1,8 +1,8 @@
 import Spline from '@splinetool/react-spline';
+
 import Button from './Button';
 
 export default function Header() {
-
 
   return (
     <header className="grid xl:grid-cols-2 container px-10 h-auto sm:min-h-screen mt-44 sm:mt-0 mb-32 items-center">
@@ -12,7 +12,7 @@ export default function Header() {
         
         <div className='mt-5 flex flex-wrap gap-10'>
           <Button type={'secondary'} url={'#about'} content={'About me'} />
-          <Button type={'primary'} url={'#'} content={'Download CV'} />
+          <Button type={'primary'} url={'./cv-victor-autheman.pdf'} content={'Download CV'} />
         </div>
       </div>
 
