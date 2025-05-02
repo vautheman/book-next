@@ -38,9 +38,9 @@ export default function Works({ works, categories, url }) {
       <Nav />
       <section className="container px-10 mt-52">
 
-        <header className="mb-32 container ">
+        <header className="mb-32 container">
           <h1 className="font-title font-bold text-7xl lg:text-8xl mb-5">Latest <span className='text-primary'>projects</span> and <span className="text-primary">works</span></h1>
-          <p className='font-body text-xl text-body-secondary'>Découvrez mes réalisations, qu'il s'agisse de projets de conception graphique pour des clients, des entreprises et des organisations, ou de projets de développement de sites web et d'applications. Chaque projet est accompagné d'une description détaillée, ainsi que d'informations sur les missions que j'ai menées à bien pour améliorer l'expérience utilisateur et la qualité. J'espère que ces exemples concrets inspireront vos propres projets et missions.</p>
+          <p className='font-body text-xl text-body-secondary'>Découvrez mes réalisations, qu&apos;il s&apos;agisse de projets de conception graphique pour des clients, des entreprises et des organisations, ou de projets de développement de sites web et d&apos;applications. Chaque projet est accompagné d&apos;une description détaillée, ainsi que d&apos;informations sur les missions que j&apos;ai menées à bien pour améliorer l&apos;expérience utilisateur et la qualité. J&apos;espère que ces exemples concrets inspireront vos propres projets et missions.</p>
         </header>
 
 
