@@ -1,16 +1,29 @@
 import Link from 'next/link'
+import { useState } from 'react'
 import 'remixicon/fonts/remixicon.css'
 
-export default function Footer() {
+export default function Footer({lastWorks}) {
+
+  const [load, setLoad] = useState(null)
+  console.log(lastWorks)
   return (
-    <footer className="bg-background w-full mt-80">
+    <footer className="bg-background w-full">
       <div className="container px-10 py-32">
         <div className="flex flex-wrap gap-20">
           <ul className="font-body text-lg text-body-secondary">
             <h4 className="font-title text-3xl text-white mb-5 w-max">Latest project</h4>
-            <Link href={'#'} className='hover:text-secondary transition-colors' ><li>Totor & Jadou</li></Link>
+            {lastWorks && 
+              lastWorks.data.map((work, index) => {
+                return (
+                  <Link onClick={() => setLoad(index)} className="flex flex-col gap-8 group" href={{pathname: '/work-detail', query: {id: work.id} }} key={work.id}>
+                    <li>{work.attributes.Titre}</li>
+                  </Link>
+                )
+              })
+            }
+            {/* <Link href={'#'} className='hover:text-secondary transition-colors' ><li>Totor & Jadou</li></Link>
             <Link href={'#'} className='hover:text-secondary transition-colors' ><li>Fabulous</li></Link>
-            <Link href={'#'} className='hover:text-secondary transition-colors' ><li>Book 2023</li></Link>
+            <Link href={'#'} className='hover:text-secondary transition-colors' ><li>Book 2023</li></Link> */}
           </ul>
 
           <ul className="font-body text-lg text-body-secondary">

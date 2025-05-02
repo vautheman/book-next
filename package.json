@@ -11,10 +11,13 @@
   "dependencies": {
     "@apollo/client": "^3.7.14",
     "@nadfri/react-scroll-progress-bar": "^0.2.3",
+    "@remixicon/react": "^4.6.0",
     "@sendgrid/mail": "^7.7.0",
     "@splinetool/react-spline": "^2.2.6",
     "animate.css": "^4.1.1",
     "autoprefixer": "10.4.14",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
     "framer-motion": "^10.12.11",

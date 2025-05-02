@@ -38,9 +38,9 @@ export default function Works({ works, categories, url }) {
       <Nav />
       <section className="container px-10 mt-52">
 
-        <header className="mb-32 container max-w-7xl">
+        <header className="mb-32 container ">
           <h1 className="font-title font-bold text-7xl lg:text-8xl mb-5">Latest <span className='text-primary'>projects</span> and <span className="text-primary">works</span></h1>
-          <p className='font-body text-xl text-body-secondary'>Discover my achievements, from graphic design projects for clients, companies and organizations, to front-end development projects for websites and applications. Each project is accompanied by a detailed description, as well as information about the missions I have successfully accomplished to improve user experience and quality. I hope that these concrete examples will inspire your own projects and missions.</p>
+          <p className='font-body text-xl text-body-secondary'>Découvrez mes réalisations, qu'il s'agisse de projets de conception graphique pour des clients, des entreprises et des organisations, ou de projets de développement de sites web et d'applications. Chaque projet est accompagné d'une description détaillée, ainsi que d'informations sur les missions que j'ai menées à bien pour améliorer l'expérience utilisateur et la qualité. J'espère que ces exemples concrets inspireront vos propres projets et missions.</p>
         </header>
 
 
@@ -62,7 +62,7 @@ export default function Works({ works, categories, url }) {
 
 
       
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-24 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-24 mx-auto mb-80">
           {works &&
             works.data.map((work, index) => {
               return (

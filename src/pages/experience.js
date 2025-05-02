@@ -165,7 +165,7 @@ export default function Experience() {
         </div>
       </section>
 
-      <section className="container px-10">
+      <section className="container px-10 mb-80">
         <header className="flex flex-col gap-5 max-w-5xl mx-auto text-center">
           <h1 className="mt-52 font-title font-bold text-7xl md:text-8xl">My <span className="text-primary">journey</span> and <span className="text-secondary">training</span></h1>
           <p className='font-body text-xl text-body-secondary'>Every day, I&rsquo;m honing my skills on the most in-demand technologies, such as JavaScript, React.js, Next.js, Tailwind CSS, Node.js, MariaDB, PHP, and much more! My flexibility allows me to choose the technologies I want to use in my projects.</p>

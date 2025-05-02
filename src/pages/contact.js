@@ -57,18 +57,18 @@ export default function Contact() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <Nav />
-      <section className="container px-10">
+      <section className="container px-10 mb-80">
         <header className="flex flex-col gap-5">
-          <h1 className="mt-52 font-title font-bold text-7xl lg:text-8xl">Tell me all <span className='text-primary'>about</span> it <Image className='inline mb-6' src={emojiHand} width={'80'} height={'100'} /></h1>
+          <h1 className="mt-52 font-title font-bold text-7xl lg:text-8xl">Dites moi <span className='text-primary'>tout</span> <Image className='inline mb-6' src={emojiHand} width={'80'} height={'100'} /></h1>
           <form className="mt-10" onSubmit={handleOnSubmit}>
             <div className="flex flex-wrap flex-col sm:flex-row font-title text-5xl sm:items-center gap-8">
-              <p>My name is </p>
-              <input required name="name" type="text" placeholder="your name" className="placeholder:text-white/20 text-primary border-b-white/20 border-b-4 bg-transparent w-full sm:w-96 py-3 focus:outline-none focus:border-primary" />
-              <p>it concerns</p>
+              <p>Je m'appelle </p>
+              <input required name="name" type="text" placeholder="votre nom" className="placeholder:text-white/20 text-primary border-b-white/20 border-b-4 bg-transparent w-full sm:w-96 py-3 focus:outline-none focus:border-primary" />
+              <p>cela concerne</p>
 
               <input required value='quote' id="quote" name="object" type="radio" className="hidden" />
               <label for={'quote'} className="group w-max relative p-3 border-4 border-white/20 text-white/20 checked hover:scale-105 hover:-rotate-2 hover:border-primary hover:bg-purple-dark/30 hover:text-white/50 transition-all cursor-pointer">
-                a quote
+                un devis
                 <span className='w-3 h-3 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
@@ -77,7 +77,7 @@ export default function Contact() {
 
               <input required value='question' id="question" name="object" type="radio" className="hidden" />
               <label for={'question'} className="group w-max relative p-3 border-4 border-white/20 text-white/20 checked hover:scale-105 hover:-rotate-2 hover:border-primary hover:bg-purple-dark/30 hover:text-white/50 transition-all cursor-pointer">
-                a question
+                une question
                 <span className='w-3 h-3 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
@@ -86,19 +86,19 @@ export default function Contact() {
 
               <input required value='proposition' id="proposition" name="object" type="radio" className="hidden" />
               <label for={'proposition'} className="group w-max relative p-3 border-4 border-white/20 text-white/20 checked hover:scale-105 hover:-rotate-2 hover:border-primary hover:bg-purple-dark/30 hover:text-white/50 transition-all cursor-pointer">
-                a proposition
+                une proposition
                 <span className='w-3 h-3 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                 <span className='w-3 h-3 bg-primary absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
               </label>
 
-              <p>. You can reach me at</p>
+              <p>. Vous pouvez me joindre via</p>
 
               <input required name="email" type="text" placeholder="your email" className="placeholder:text-white/20 text-primary border-b-white/20 border-b-4 bg-transparent w-full sm:w-96 py-3 focus:outline-none focus:border-primary" />
             </div>
 
-            <textarea required name="message" className="w-full h-64 mt-16 mb-10 bg-white/5 font-body text-xl text-white py-5 px-8 placeholder:text-white/20 placeholder:font-bold focus:outline-none" placeholder="Your message">
+            <textarea required name="message" className="w-full h-64 mt-16 mb-10 bg-white/5 font-body text-xl text-white py-5 px-8 placeholder:text-white/20 placeholder:font-bold focus:outline-none" placeholder="Votre message">
               
             </textarea>
 
@@ -109,7 +109,7 @@ export default function Contact() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  <p className='font-body text-black text-xl'>{effect && effect ? "Sending in progress" : "Just Send"}</p>
+                  <p className='font-body text-black text-xl'>{effect && effect ? "Transmition en cours" : "Transmettre"}</p>
                 </div>
               </button>
 

@@ -1,22 +1,39 @@
 import Nav from "@/components/Nav"
-import { useRouter } from "next/router"
 import { fetcher } from "./api/mail";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Footer from "@/components/Footer";
 import moment from "moment";
 import 'moment/locale/fr';
-import { motion, useIsPresent } from 'framer-motion'
+import { delay, motion, useIsPresent } from 'framer-motion'
 import Image from "next/image";
-import { useState } from "react";
 import Head from "next/head";
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from "embla-carousel-autoplay";
+import {
+  PrevButton,
+  NextButton,
+  usePrevNextButtons
+} from '../components/emblaCarousel/EmblaCarouselArrowButtons'
 
-export default function WorkDetail({work, url}) {
+export default function WorkDetail({work, url, lastWorks}) {
   function ImageLoader({src}) {
     return url + src
   }
 
   const isPresent = useIsPresent()
   moment.locale('fr')
+
+  const autoplayOptions = {
+    delay: 1500,
+  }
+  const [emblaRef, emblaApi] = useEmblaCarousel({loop: false}, [Autoplay(autoplayOptions)])
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick
+  } = usePrevNextButtons(emblaApi)
+
   return( 
     <>
       <Head>
@@ -57,13 +74,41 @@ export default function WorkDetail({work, url}) {
         </div>
       </div>  
 
+      {
+        work.data.attributes.Gallery && work.data.attributes.Gallery.data.length > 0 &&
+        <div className="embla bg-background py-10">
+          <div className="container touch-pan-y touch-pinch-zoom px-10 embla__viewport overflow-hidden" ref={emblaRef}>
+            <div className="embla__container flex items-center gap-10">
+              { work.data.attributes.Gallery.data.map((gallery, index) => {
+                return (
+                  <>
+                    {gallery.attributes.formats.medium ?
+                      <div key={index} className="embla__slide flex-none basis-1/2"><Image className="w-full" sizes="100%" width={200} height={200} loader={ImageLoader} src={gallery.attributes.formats.medium.url} /></div>
+                      : 
+                      <div key={index} className="embla__slide flex-none basis-1/2"><Image className="w-full" sizes="100%" width={200} height={200} loader={ImageLoader} src={gallery.attributes.formats.small.url} /></div>
+                    }
+                  </>
+                )
+              })
+            }
+            </div>
+          </div>
+          <div className="container px-10 embla__controls flex gap-5 flex-row items-center">
+            <div className="embla__buttons flex gap-3">
+              <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+              <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+            </div>
+          </div>
+        </div>
+      }  
+
       <section className="container px-10 flex">
         <ReactMarkdown className="markdown max-w-5xl mx-auto">
           {work.data.attributes.Contenu}
         </ReactMarkdown>
       </section>
 
-      <Footer />
+      <Footer lastWorks={lastWorks} />
 
       <motion.div 
         initial={{ scaleX: 1 }}
@@ -83,11 +128,14 @@ export async function getServerSideProps({query}){
   const id = query.id
   const workResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/${id}/?populate=*`);
 
+  // Récupère les derniers posts
+  const lastWorksRes = await fetcher(`${process.env.STRAPI_URL}/api/realisations/?fields=Titre&sort=id%3Adesc&pagination[limit]=3`);
 
   return {
     props: {
       work: workResponse,
-      url: process.env.STRAPI_URL
+      url: process.env.STRAPI_URL,
+      lastWorks: lastWorksRes
     }
   }
 

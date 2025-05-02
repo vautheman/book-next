@@ -16,7 +16,7 @@ import { useState } from 'react'
 import { fetcher } from './api/mail'
 import moment from 'moment'
 
-export default function Home({works, url}) {
+export default function Home({works, url, lastWorks}) {
   const [load, setLoad] = useState(-1)
   const isPresent = useIsPresent()
 
@@ -36,7 +36,7 @@ export default function Home({works, url}) {
       <Nav /> 
       <Header />
       
-      <section className='grid md:grid-cols-2 gap-20 container px-10 mt-20'>
+      <section className='grid md:grid-cols-2 gap-20 container px-10 pb-96 pt-28' id='about'>
         <div className='border-primary border w-max relative bg-purple-dark/30 group hover:-rotate-2 hover:scale-105 transition-all mb-10 md:mb-0'>
           <Image src={profile} width={'350'} height={'100'} alt='profile photo' className='w-full sm:w-auto'/>
           <span className='w-4 h-4 bg-primary absolute right-0 top-0 translate-x-1/2 -translate-y-1/2'></span>
@@ -53,23 +53,27 @@ export default function Home({works, url}) {
 
 
         <div className='flex flex-col justify-center'>
-          <h2 className="font-title font-bold text-5xl sm:7xl lg:text-8xl"><span className='text-secondary'>Hi</span> there <Image className='inline mb-6' src={emojiHand} width={'80'} height={'100'} /></h2>
-          <p className='font-body max-w-xl text-xl text-body-secondary'>True passionate about new technologies, web design and computer graphics, I am dynamic, motivated and curious and in constant progress in my job. I feed my thirst for knowledge every day to improve my creative spirit and move forward.</p>
+          <h2 className="font-title font-bold text-5xl mb-10 sm:7xl lg:text-8xl">Besoin de <span className='text-secondary'>changements ?</span></h2>
+          <p className='font-body max-w-xl text-xl text-body-secondary'>Tu veux repenser ton identité visuelle, créer un site web sur-mesure ou renforcer ta communication ?</p>
+          <p className='font-body max-w-xl text-xl text-body-secondary mt-5'>Parlons de ton projet et voyons ensemble comment lui donner une nouvelle dimension.</p>
+          <div className='mt-10'>
+            <Button type={'secondary'} url={'contact'} content={'Demander un devis'} />
+          </div>
         </div>
       </section>
 
       
-      <section className='mt-64 container px-10'>
-        <h2 className="font-title font-bold text-7xl md:text-8xl text-center mb-24">My favorite <span className='text-primary'>projects</span></h2>
+      <section className='container px-10 mb-80'>
+        <h2 className="font-title font-bold text-7xl md:text-8xl text-left mb-24">Mes dernières <span className='text-primary'>réalisations</span></h2>
         <div className='flex flex-wrap justify-center gap-10'>
 
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-24 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-24 mx-auto w-full">
             {works &&
                 works.data.map((work, index) => {
                 return (
 
-                  <Link onClick={() => setLoad(index)} className="flex flex-col gap-8 group" href={{pathname: '/work-detail', query: {id: work.id} }} key={work.id}>
+                  <Link onClick={() => setLoad(index)} className="flex flex-col gap-8 group w-full" href={{pathname: '/work-detail', query: {id: work.id} }} key={work.id}>
                     <header className="relative group-hover:scale-105 transition-transform">
                       <div className="relative">
                         <Image sizes="100%" width={"500"} height={"500"} className="aspect-video object-cover w-full rounded-sm" loader={ImageLoader} src={work.attributes.Image.data.attributes.formats.medium.url} />
@@ -104,7 +108,7 @@ export default function Home({works, url}) {
         </div>
       </section>
 
-      <Footer />
+      <Footer lastWorks={lastWorks} />
 
       <motion.div 
         initial={{ scaleX: 1 }}
@@ -121,13 +125,17 @@ export default function Home({works, url}) {
 
 export async function getStaticProps() {
 
-  const worksResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/?populate=*&filters[id][$eq][0]=1&filters[id][$eq][1]=7&sort=id%3Adesc`);
-  // console.log(worksResponse)
+  // const worksResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/?populate=*&filters[id][$eq][0]=1&filters[id][$eq][1]=7&sort=id%3Adesc`);
+  const worksResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/?populate=*&sort=id%3Adesc&pagination[limit]=4`);
+
+  // Récupère les derniers posts
+  const lastWorksRes = await fetcher(`${process.env.STRAPI_URL}/api/realisations/?fields=Titre&sort=id%3Adesc&pagination[limit]=3`);
 
   return {
     props: {
       works: worksResponse,
-      url: process.env.STRAPI_URL
+      url: process.env.STRAPI_URL,
+      lastWorks: lastWorksRes
     }
   }
 }
