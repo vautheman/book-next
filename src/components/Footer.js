@@ -5,7 +5,6 @@ import 'remixicon/fonts/remixicon.css'
 export default function Footer({lastWorks}) {
 
   const [load, setLoad] = useState(null)
-  console.log(lastWorks)
   return (
     <footer className="bg-background w-full">
       <div className="container px-10 py-32">
