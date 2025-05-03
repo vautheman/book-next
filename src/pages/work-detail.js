@@ -75,12 +75,12 @@ export default function WorkDetail({work, url, lastWorks}) {
       </div>  
 
       {
-        work.data.attributes.Gallery?.data?.length > 0 && (
+        work.data.attributes.Gallery?.data && (
           <div className="embla bg-background py-10">
             <div className="container touch-pan-y touch-pinch-zoom px-10 embla__viewport overflow-hidden" ref={emblaRef}>
               <div className="embla__container flex items-center gap-10">
                 { work.data.attributes.Gallery.data.map((gallery, index) => (
-                    <div key={index} className="embla__slide flex-none basis-1/2"><Image className="w-full" sizes="100%" width={200} height={200} loader={ImageLoader} src={gallery.attributes.formats?.medium?.url ? gallery.attributes.formats.medium.url : gallery.attributes.formats.small.url} /></div>
+                    <div key={index} className="embla__slide flex-none basis-1/2"><Image className="w-full" sizes="100%" width={200} height={200} loader={ImageLoader} src={gallery.attributes.formats?.medium?.url || gallery.attributes.formats.small.url } /></div>
                 ))}
               </div>
             </div>
