@@ -75,7 +75,7 @@ export default function WorkDetail({work, url, lastWorks}) {
       </div>  
 
       {
-        work.data.attributes.Gallery && work.data.attributes.Gallery.data.length > 0 &&
+        work.data.attributes.Gallery?.data?.length > 0 &&
         <div className="embla bg-background py-10">
           <div className="container touch-pan-y touch-pinch-zoom px-10 embla__viewport overflow-hidden" ref={emblaRef}>
             <div className="embla__container flex items-center gap-10">
