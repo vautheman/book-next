@@ -62,7 +62,7 @@ export default function Contact() {
           <h1 className="mt-52 font-title font-bold text-7xl lg:text-8xl">Dites moi <span className='text-primary'>tout</span> <Image className='inline mb-6' src={emojiHand} width={'80'} height={'100'} /></h1>
           <form className="mt-10" onSubmit={handleOnSubmit}>
             <div className="flex flex-wrap flex-col sm:flex-row font-title text-5xl sm:items-center gap-8">
-              <p>Je m'appelle </p>
+              <p>Je m&apos;appelle </p>
               <input required name="name" type="text" placeholder="votre nom" className="placeholder:text-white/20 text-primary border-b-white/20 border-b-4 bg-transparent w-full sm:w-96 py-3 focus:outline-none focus:border-primary" />
               <p>cela concerne</p>
 
