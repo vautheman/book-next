@@ -68,7 +68,7 @@ input[type="radio"]:checked + .checked span {
 }
 
 .markdown img {
-  @apply mb-2
+  @apply mb-2 w-full
 }
 
 .markdown pre {

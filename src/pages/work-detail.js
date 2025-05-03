@@ -82,13 +82,19 @@ export default function WorkDetail({work, url, lastWorks}) {
         </div>
       </div>  
 
+      <section className="container px-10 flex">
+        <ReactMarkdown className="markdown max-w-5xl mx-auto">
+          {work.data.attributes.Contenu}
+        </ReactMarkdown>
+      </section>
+
       {
         galleryImages.length > 0 && (
-          <div className="embla bg-background py-10">
-            <div className="container touch-pan-y touch-pinch-zoom px-10 embla__viewport overflow-hidden" ref={emblaRef}>
-              <div className="embla__container flex items-center gap-10">
+          <div className="embla bg-background py-10 flex flex-col gap-12">
+            <div className="container touch-pan-y touch-pinch-zoom px-10 embla__viewport overflow-hidden h-[500px]" ref={emblaRef}>
+              <div className="embla__container flex items-center gap-10 h-full">
                 { galleryImages.map((image, index) => (
-                  <div key={index} className="embla__slide flex-none basis-1/2"><Image alt={image.attributes.alternativeText} className="w-full" sizes="100%" width={200} height={200} loader={ImageLoader} src={image.attributes.formats?.medium?.url || image.attributes.formats.small.url } /></div>
+                  <div key={index} className="embla__slide flex-none basis-1/2 h-full"><Image alt={image.attributes.alternativeText} className="w-full object-contain h-full" sizes="100%" width={200} height={200} loader={ImageLoader} src={image.attributes.formats?.medium?.url || image.attributes.formats.small.url } /></div>
                 ))}
               </div>
             </div>
@@ -101,12 +107,6 @@ export default function WorkDetail({work, url, lastWorks}) {
           </div>
         )
       }  
-
-      <section className="container px-10 flex">
-        <ReactMarkdown className="markdown max-w-5xl mx-auto">
-          {work.data.attributes.Contenu}
-        </ReactMarkdown>
-      </section>
 
       <Footer lastWorks={lastWorks} />
 

@@ -116,7 +116,7 @@ export default function Works({ works, categories, url }) {
 
 export async function getServerSideProps() {
 
-  const worksResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/?populate=*&sort[0]=updatedAt%3Adesc`);
+  const worksResponse = await fetcher(`${process.env.STRAPI_URL}/api/realisations/?populate=*&sort[0]=publishedAt%3Adesc`);
   const categoriesResponse = await fetcher(`${process.env.STRAPI_URL}/api/categories/?sort[0]=Nom%3Aasc`);
 
   return {
