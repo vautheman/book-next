@@ -75,31 +75,23 @@ export default function WorkDetail({work, url, lastWorks}) {
       </div>  
 
       {
-        work.data.attributes.Gallery?.data?.length > 0 &&
-        <div className="embla bg-background py-10">
-          <div className="container touch-pan-y touch-pinch-zoom px-10 embla__viewport overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex items-center gap-10">
-              { work.data.attributes.Gallery.data.map((gallery, index) => {
-                return (
-                  <>
-                    {gallery.attributes.formats.medium ?
-                      <div key={index} className="embla__slide flex-none basis-1/2"><Image className="w-full" sizes="100%" width={200} height={200} loader={ImageLoader} src={gallery.attributes.formats.medium.url} /></div>
-                      : 
-                      <div key={index} className="embla__slide flex-none basis-1/2"><Image className="w-full" sizes="100%" width={200} height={200} loader={ImageLoader} src={gallery.attributes.formats.small.url} /></div>
-                    }
-                  </>
-                )
-              })
-            }
+        work.data.attributes.Gallery?.data?.length > 0 && (
+          <div className="embla bg-background py-10">
+            <div className="container touch-pan-y touch-pinch-zoom px-10 embla__viewport overflow-hidden" ref={emblaRef}>
+              <div className="embla__container flex items-center gap-10">
+                { work.data.attributes.Gallery.data.map((gallery, index) => (
+                    <div key={index} className="embla__slide flex-none basis-1/2"><Image className="w-full" sizes="100%" width={200} height={200} loader={ImageLoader} src={gallery.attributes.formats?.medium?.url ? gallery.attributes.formats.medium.url : gallery.attributes.formats.small.url} /></div>
+                ))}
+              </div>
+            </div>
+            <div className="container px-10 embla__controls flex gap-5 flex-row items-center">
+              <div className="embla__buttons flex gap-3">
+                <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+                <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+              </div>
             </div>
           </div>
-          <div className="container px-10 embla__controls flex gap-5 flex-row items-center">
-            <div className="embla__buttons flex gap-3">
-              <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-              <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-            </div>
-          </div>
-        </div>
+        )
       }  
 
       <section className="container px-10 flex">
